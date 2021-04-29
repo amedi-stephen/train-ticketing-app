@@ -1,20 +1,21 @@
 import React from "react";
-
+import { Link } from "react-router-dom";
+import "./Sidebar.css";
 const Sidebar = () => {
   return (
     <div className="nav-links show-nav-links">
       <ul className="links">
         <li>
-          <a href="#">book a train</a>
+          <Link to="">book a train</Link>
         </li>
         <li>
-          <a href="#">stations</a>
+          <Link to="/stations">stations</Link>
         </li>
         <li>
-          <a href="#">stories</a>
+          <Link to="/stories">stories</Link>
         </li>
         <li>
-          <a href="#">contacts</a>
+          <Link href="/contacts">contacts</Link>
         </li>
       </ul>
     </div>
