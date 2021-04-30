@@ -1,0 +1,30 @@
+.Search-field {
+  padding: 20px 5%;
+  /* TODO: align content in the center */
+}
+
+.form-group label {
+  display: block;
+  text-transform: capitalize;
+  font-weight: bold;
+  color: #e4e4e4;
+}
+
+.form-group select,
+input {
+  padding: 10px 18px;
+  margin-right: 5px;
+  border: none;
+  border-radius: 30px;
+  outline: none;
+}
+
+.button-hero-lg {
+  cursor: pointer;
+  border: none;
+  outline: none;
+  padding: 15px 25px;
+  background-color: #f96332;
+  color: white;
+  margin: 20px 0;
+}

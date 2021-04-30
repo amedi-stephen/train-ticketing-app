@@ -1,0 +1,31 @@
+.Search-train {
+    background-image: linear-gradient(
+      rgba(139, 0, 0, 0.7),
+      rgba(220, 20, 60, 0.4)
+    ),
+    url("../images/balazs-busznyak-El5zuQAtfeo-unsplash.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center center;
+  height: 90vh;
+}
+
+.hero-image-content {
+    padding: 40px 0;
+    height: 90vh;
+    display: flex;
+    justify-content: center;
+}
+
+.hero-position {
+  /* TODO: find appropriate color */
+  color: #e1e1e1;
+}
+
+@media (min-width: 576px) {
+    .hero-image-content {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+}

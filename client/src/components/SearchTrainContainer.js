@@ -1,5 +1,5 @@
 import React from "react";
-import "./SearchTrainContainer.css";
+import "../Css/SearchTrainContainer.css";
 import SearchTrainForm from "./SearchTrainForm";
 
 const SearchTrainContainer = () => {

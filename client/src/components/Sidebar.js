@@ -1,6 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import "./Sidebar.css";
+import "../Css/Sidebar.css";
 const Sidebar = () => {
   return (
     <div className="nav-links show-nav-links">
