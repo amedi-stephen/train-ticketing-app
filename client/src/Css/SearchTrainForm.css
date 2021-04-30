@@ -26,5 +26,15 @@ input {
   padding: 15px 25px;
   background-color: #f96332;
   color: white;
-  margin: 20px 0;
+}
+
+@media (min-width: 576px) {
+  .Search-field {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  .button-hero-lg {
+
+  }
 }

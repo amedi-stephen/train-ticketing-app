@@ -1,0 +1,1 @@
+export const NEW_TRAVELLER = "NEW_TRAVELLER";

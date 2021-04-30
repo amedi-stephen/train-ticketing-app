@@ -86,7 +86,7 @@ const SearchTrainForm = () => {
           </div>
 
           <button type="submit" className="button-hero-lg">
-            Book a train
+            Search
           </button>
         </Form>
       )}
