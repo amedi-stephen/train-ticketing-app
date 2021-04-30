@@ -3,24 +3,20 @@ const { Schema } = mongoose;
 
 const trainSchema = new Schema({
     trainName: String,
+    totalSeats: Number,
     firstClass: {
         type: Number,
-        max: 100
+        max: 500
     },
     economyClass: {
         type: Number,
-        max: 200
+        max: 760
     },
-    source: {
-        type: String,
-        required: true
-    },
-    destination: {
-        type: String,
-        required: true
-    },
+    source: String,
+    destination: String,
+    departureDate: Date,
     departureTime: Date,
-    arrivalTime: Date,
+    // arrivalTime: Date
 });
 
 module.exports = mongoose.model("Train", trainSchema);

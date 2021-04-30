@@ -9,14 +9,15 @@ app.use(express.json())
 app.use(express.urlencoded({extended: true}))
 app.use(cors());
 
+
+mongoose.connect("mongodb://localhost:27017/traindb", {
+  useNewUrlParser: true,
+  useUnifiedTopology: true,
+});
+
+const db = mongoose.connection;
+db.on("error", console.error.bind(console, "Connection Error: "));
+db.once("open", () => console.log("Connection to the db successful"));
+
 const PORT = process.env.PORT || 5000;
-
-mongoose
-  .connect("mongodb://localhost:27017/traindb", {
-    useNewUrlParser: true,
-    useUnifiedTopology: true,
-  })
-  .then(app.listen(PORT, () => console.log(`Server listening at port ${PORT}`)))
-  .catch((error) => error.message);
-
-mongoose.set("useFindAndModify", false);
+app.listen(PORT, () => console.log(`Server running at port ${PORT}`))
