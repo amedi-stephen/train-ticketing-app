@@ -1,20 +1,39 @@
 const express = require("express");
-const trainRouter = express.Router();
+const trainsRoute = express.Router();
 const Train = require("../models/Train");
-const trainController = require("");
 
-//TODO: for server [all trains]
+// TODO: trains to destination
 
-// trains to specific destination
-trainRouter.get("/trainstodestination", async (req, res) => {
+trainsRoute.get("/", async (req, res) => {
   try {
-    //   const trainsToDestination = Train.find({})
+    const trains = await Train.find({
+      from: "Nairobi",
+      destination: "Mombasa",
+    });
+    res.json(trains);
   } catch (error) {
     res.json({ message: error });
   }
 });
-// one train to specific destination
 
-//TODO: allowing for posting of a train by admin
+trainsRoute.post("/post", async (req, res) => {
+  const post = new Train({
+    trainName: req.body.trainName,
+    totalSeats: req.body.totalSeats,
+    firstClass: req.body.firstClass,
+    economyClass: req.body.economyClass,
+    from: req.body.from,
+    destination: req.body.destination,
+    departureDate: req.body.departureDate,
+  });
 
-module.exports = trainRouter;
+  try {
+    const savedTrain = await post.save();
+    res.json(savedTrain);
+    // nest post with get
+  } catch (error) {
+    res.json({ message: error });
+  }
+});
+
+module.exports = trainsRoute;

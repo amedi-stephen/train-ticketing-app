@@ -1,23 +1,21 @@
 const express = require("express");
 const cors = require("cors");
 const mongoose = require("mongoose");
+const trainsRoute = require("./routes/train");
 
 const app = express();
 
-app.use(express.json())
-//FIXME: change to false if an error occurs
-app.use(express.urlencoded({extended: true}))
-app.use(cors());
+app.use(express.json());
+app.use(express.urlencoded({ extended: false }));
+app.use("/trains", trainsRoute);
 
-
-mongoose.connect("mongodb://localhost:27017/traindb", {
-  useNewUrlParser: true,
-  useUnifiedTopology: true,
-});
-
-const db = mongoose.connection;
-db.on("error", console.error.bind(console, "Connection Error: "));
-db.once("open", () => console.log("Connection to the db successful"));
+mongoose.connect(
+  "mongodb://localhost:27017/traindb",
+  { useNewUrlParser: true, useUnifiedTopology: true },
+  () => {
+    console.log("Connected successfully to DB!");
+  }
+);
 
 const PORT = process.env.PORT || 5000;
-app.listen(PORT, () => console.log(`Server running at port ${PORT}`))
+app.listen(PORT, () => console.log(`Server running at port: ${PORT}`));

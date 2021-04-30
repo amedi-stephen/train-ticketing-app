@@ -1,7 +1,6 @@
 const mongoose = require("mongoose");
-const { Schema } = mongoose;
 
-const trainSchema = new Schema({
+const trainSchema = mongoose.Schema({
     trainName: String,
     totalSeats: Number,
     firstClass: {
@@ -12,11 +11,11 @@ const trainSchema = new Schema({
         type: Number,
         max: 760
     },
-    source: String,
+    from: String,
     destination: String,
     departureDate: Date,
-    departureTime: Date,
-    // arrivalTime: Date
+    // departureTime: Date,
+    // arrivalTime: Date,
 });
 
 module.exports = mongoose.model("Train", trainSchema);
