@@ -6,10 +6,11 @@ const Train = require("../models/Train");
 
 trainsRoute.get("/", async (req, res) => {
   try {
-    const trains = await Train.find({
-      from: "Nairobi",
-      destination: "Mombasa",
-    });
+    // const trains = await Train.find({
+    //   from: "Nairobi",
+    //   destination: "Mombasa",
+    // });
+    const trains = await Train.find();
     res.json(trains);
   } catch (error) {
     res.json({ message: error });

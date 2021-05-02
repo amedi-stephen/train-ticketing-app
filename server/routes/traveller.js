@@ -2,12 +2,9 @@ const express = require("express");
 const travellerRouter = express.Router();
 const Traveller = require("../models/Traveller");
 
-//TODO: later, all travellers statistics
-
 // post traveller
 travellerRouter.post("/post", async (req, res) => {
   const traveller = new Traveller({
-    // TODO: how will i represent this
     travellers: req.body.travellers,
     coachClass: req.body.coachClass,
     price: req.body.price,
@@ -23,10 +20,25 @@ travellerRouter.post("/post", async (req, res) => {
   } catch (error) {
     res.json({ message: error });
   }
-
-//   console.log(req.body);
 });
 
 // traveller_id
+travellerRouter.get("/user/:user_id", async(req, res) => {
+    try {
+        const user = await Traveller.findById(req.params.user_id);
+        res.json(user);
+    } catch (error) {
+        res.json({ message: error })
+    }
+})
+
+travellerRouter.get("/users", async(req, res) => {
+    try {
+        const users = await Traveller.find();
+        res.json(users)
+    } catch (error) {
+        res.json({ message: error })
+    }
+})
 
 module.exports = travellerRouter;
