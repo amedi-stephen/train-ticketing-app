@@ -2,12 +2,15 @@ const express = require("express");
 const cors = require("cors");
 const mongoose = require("mongoose");
 const trainsRoute = require("./routes/train");
+const travellersRoute = require("./routes/traveller");
 
 const app = express();
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
+app.use(cors());
 app.use("/trains", trainsRoute);
+app.use("/traveller", travellersRoute);
 
 mongoose.connect(
   "mongodb://localhost:27017/traindb",

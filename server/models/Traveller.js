@@ -4,42 +4,22 @@ const { Schema } = mongoose;
 const travellerSchema = new Schema({
     travellers: [
         {
-            fullname: {
-                type: String,
-                required: true,
-                trim: true
-            },
-            idcard: {
-                type: String,
-                required: true
-            },
-            gender: {
-                type: String, 
-                required: true
-            },
-            nationality: {
-                type: String,
-                required: true
-            }
+            fullname: String,
+            idcard: String,
+            gender: String,
+            nationality: String
         }
     ],
-    coachClass: {
-        type: String,
-        required: true
-    },
-    price: {
-        type: Number,
-        required: true
-    },
+    coachClass: String,
+    price: String,
     travellerEmail: String,
-    mpesaNumber: {
-        type: String,
-        required: true
-    },
+    mpesaNumber: String,
     travellingDate: {
         type: String,
         default: Date.now
-    }
+    },
+    locationFrom: String,
+    locationTo: String
 });
 
 module.exports = mongoose.model("Traveller", travellerSchema);;
