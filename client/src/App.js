@@ -6,7 +6,10 @@ import LandingPage from "./components/LandingPage";
 import Stations from "./components/Stations";
 import Stories from "./components/Stories";
 import Contacts from "./components/Contacts";
+import TrainPage from "./components/TrainPage";
 import store from "./store";
+import SeatInfoPage from "./components/SeatInfoPage";
+// import TrainContainer from "./components/TrainContainer";
 
 const App = () => {
   return (
@@ -20,6 +23,8 @@ const App = () => {
           <Route path="/stations" component={Stations} />
           <Route path="/stories" component={Stories} />
           <Route path="/contacts" component={Contacts} />
+          <Route path="/trains" component={TrainPage} />
+          <Route path="/seats" component={SeatInfoPage} />
         </Switch>
       </Router>
     </Provider>

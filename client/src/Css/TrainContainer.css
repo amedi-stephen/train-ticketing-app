@@ -1,0 +1,9 @@
+.train-container {
+    margin: 40px 10%;
+}
+
+.train-row {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}

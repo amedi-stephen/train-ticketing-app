@@ -1,0 +1,23 @@
+.traveller-details {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.form-group-seats label {
+    color: black;
+    display: block;
+}
+
+input {
+    border: 1px solid #f96332;
+}
+
+select {
+    border: 1px solid #f96332;
+    padding: 10px 50px;
+    border-radius: 20px;
+}
+select:focus {
+    outline: none;
+}

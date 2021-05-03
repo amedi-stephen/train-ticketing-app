@@ -1,8 +1,8 @@
 import { combineReducers } from "redux";
-import travellerReducer from "./travellerReducer";
-import trainReducer from "./trainReducer";
+import trainsReducer from "./trainsReducer";
+import travellersReducer from "./travellersReducer";
 
 export default combineReducers({
-    traveller: travellerReducer,
-    trains: trainReducer
-})
+  trains: trainsReducer,
+  travellers: travellersReducer
+});

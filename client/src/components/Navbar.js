@@ -13,7 +13,7 @@ const Navbar = () => {
           <Link to="/">Train ticket app</Link>
         </span>
         <button className="nav-toggle" onClick={() => setShowlinks(!showlinks)}>
-          <i className="fa fa-bars"></i>
+          <i className="fa fa-bars">MENU</i>
         </button>
       </div>
       {showlinks ? <Sidebar /> : null}
