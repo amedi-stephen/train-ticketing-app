@@ -9,6 +9,7 @@ const SeatInfoForm = () => {
     class: "",
     totalPrice: "",
   });
+
   const handleSubmit = (e) => {
     e.preventDefault();
     const formValues = {
@@ -24,6 +25,16 @@ const SeatInfoForm = () => {
     // TODO: put action here...
   };
 
+  const handleReset = () => {
+    setSeatDetails({
+      adults: "",
+      children: "",
+      infants: "",
+      class: "",
+      totalPrice: ""
+    });
+  }
+
   const handleChange = (e) => {
     setSeatDetails((prevState) => ({
       ...prevState,
@@ -38,14 +49,14 @@ const SeatInfoForm = () => {
         <input
           type="number"
           placeholder="How many adults"
-          name="adult"
+          name="adults"
           onChange={handleChange}
           value={seatDetails.adults}
         />
       </div>
 
       <div className="form-group-seats">
-        <label htmFor="children">Children</label>
+        <label htmlFor="children">Children</label>
         <input
           type="number"
           placeholder="How many children(12 - 17 years)"
@@ -56,7 +67,7 @@ const SeatInfoForm = () => {
       </div>
 
       <div className="form-group-seats">
-        <label htmlFor="infants">Children</label>
+        <label htmlFor="infants">Infants</label>
         <input
           type="number"
           placeholder="How many children (3 - 7 years)"
@@ -74,6 +85,21 @@ const SeatInfoForm = () => {
           <option value="economy">Economy</option>
         </select>
       </div>
+      {/* TODO: 
+        if first class, calculate the calculations for first class
+        same as second class
+        calculations involves multiplying class price to the number of people
+        REMEMBER, each age group has its own price, highly consider this...
+        thus we need to fetch data from the train store to do this calculations
+        use onChange to detect changes and do the necessary calculations
+        also, seats booked means they have already been taken. thus the new number has to be updated and rendered.
+
+        TODO: stores needed are the train and traveller stores. to perform the necessary calculations.
+
+        1. fetch the necessary stores. this will be easy since the algorithm is all there, its just connecting to the page
+        2. start performing the calculations first
+        3. ensure the number of seats are updated after booking
+      */}
 
       <div className="form-group-seats">
         <label htmlFor="totalPrice">Total Cost</label>
@@ -82,6 +108,7 @@ const SeatInfoForm = () => {
           name="totalPrice"
           onChange={handleChange}
           value={seatDetails.totalPrice}
+          readOnly
         />
       </div>
 

@@ -1,7 +1,6 @@
 import { CREATE_TRAVELLER_DESTINATION, FETCH_TRAVELLERS } from "../actions/types";
 
 const initialState = {
-    // TODO: start from adding the travelStore array, to enable us quickly access our data
     travellersStore: [],
     travellerDestination: {}
 }

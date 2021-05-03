@@ -13,8 +13,8 @@ export function fetchTrains() {
   };
 }
 
-export function modifyTrain() {
+export function createSeatTraveller(seatData) {
   return function (dispatch) {
-    
+    fetch("")
   }
 }

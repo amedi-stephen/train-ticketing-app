@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { createDestination } from "../actions/travellersActions";
-import { connect } from "react-redux"; 
+import { connect } from "react-redux";
 import PropTypes from "prop-types";
 import "../Css/SearchTrainForm.css";
 
@@ -19,6 +19,15 @@ const SearchTrainForm = (props) => {
     }));
   };
 
+  const handleReset = () => {
+    setTrainDetails({
+      trainType: "",
+      locationFrom: "",
+      locationTo: "",
+      departureDate: "",
+    });
+  };
+
   const handleSubmit = (e) => {
     //FIXME: fix this if page submit and fails to show the trains page
     e.preventDefault();
@@ -30,9 +39,10 @@ const SearchTrainForm = (props) => {
       departureDate: trainDetails.departureDate,
     };
 
-    props.createDestination(trainDestinationDetails);   
-    
+    props.createDestination(trainDestinationDetails);
+
     // TODO: clear forms after submission
+    handleReset();
   };
   return (
     <form className="Search-field" onSubmit={handleSubmit}>
