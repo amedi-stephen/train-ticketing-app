@@ -7,8 +7,9 @@ import Stations from "./components/Stations";
 import Stories from "./components/Stories";
 import Contacts from "./components/Contacts";
 import TrainPage from "./components/TrainPage";
+import ConfirmTicket from "./components/ConfirmTicket";
+import PaymentForm from "./components/PaymentForm";
 import store from "./store";
-import SeatInfoPage from "./components/SeatInfoPage";
 // import TrainContainer from "./components/TrainContainer";
 
 const App = () => {
@@ -24,7 +25,8 @@ const App = () => {
           <Route path="/stories" component={Stories} />
           <Route path="/contacts" component={Contacts} />
           <Route path="/trains" component={TrainPage} />
-          <Route path="/seats" component={SeatInfoPage} />
+          <Route path="/ticket" component={ConfirmTicket} />
+          <Route path="/pay" component={PaymentForm} />
         </Switch>
       </Router>
     </Provider>

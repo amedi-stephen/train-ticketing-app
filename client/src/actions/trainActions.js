@@ -1,20 +1,18 @@
-import { FETCH_TRAINS } from "./types";
+import { FETCH_TRAINS, FETCH_TRAINS_DESTINATION, SINGLE_TRAIN } from "./types";
 
-export function fetchTrains() {
-  return function (dispatch) {
-    fetch("http://localhost:5000/trains")
-      .then((response) => response.json())
-      .then((data) =>
-        dispatch({
-          type: FETCH_TRAINS,
-          payload: data,
-        })
-      );
-  };
-}
+// FETCH ALL TRAINS
 
-export function createSeatTraveller(seatData) {
-  return function (dispatch) {
-    fetch("")
-  }
-}
+//FETCH ALL TRAINS BASED ON LOCATION AND DATE CRITERIA
+export const filterTrainDestination = (trains, from, destination) => (dispatch) => {
+  fetch("http://localhost:5000/trains/")
+    .then((response) => response.json())
+    .then((data) =>
+      dispatch({
+        type: FETCH_TRAINS_DESTINATION,
+        from,
+        destination,
+        payload: data
+      })
+    );
+};
+// A SINGLE TRAIN CHOSE

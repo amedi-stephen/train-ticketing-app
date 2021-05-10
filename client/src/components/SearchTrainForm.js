@@ -1,14 +1,20 @@
 import React, { useState } from "react";
-import { createDestination } from "../actions/travellersActions";
+import { withRouter, useHistory } from "react-router-dom";
 import { connect } from "react-redux";
+import { postTravellerDetails } from "../actions/travellerActions";
 import PropTypes from "prop-types";
 import "../Css/SearchTrainForm.css";
 
 const SearchTrainForm = (props) => {
+  let history = useHistory();
   const [trainDetails, setTrainDetails] = useState({
     trainType: "",
     locationFrom: "",
     locationTo: "",
+    adults: "",
+    children: "",
+    infants: "",
+    class: "",
     departureDate: "",
   });
 
@@ -24,28 +30,37 @@ const SearchTrainForm = (props) => {
       trainType: "",
       locationFrom: "",
       locationTo: "",
+      adults: "",
+      children: "",
+      infants: "",
+      class: "",
       departureDate: "",
     });
   };
 
   const handleSubmit = (e) => {
-    //FIXME: fix this if page submit and fails to show the trains page
     e.preventDefault();
 
     const trainDestinationDetails = {
       trainType: trainDetails.trainType,
       locationFrom: trainDetails.locationFrom,
       locationTo: trainDetails.locationTo,
+      adults: trainDetails.adults,
+      children: trainDetails.children,
+      infants: trainDetails.infants,
+      class: trainDetails.class,
       departureDate: trainDetails.departureDate,
     };
 
-    props.createDestination(trainDestinationDetails);
+    props.postTravellerDetails(trainDestinationDetails);
 
-    // TODO: clear forms after submission
     handleReset();
+
+    history.push("/trains");
   };
   return (
     <form className="Search-field" onSubmit={handleSubmit}>
+
       <div className="form-group">
         <label htmlFor="trainType">Train Type</label>
         <select
@@ -101,6 +116,48 @@ const SearchTrainForm = (props) => {
       </div>
 
       <div className="form-group">
+        <label htmlFor="adult">Adults</label>
+        <input
+          type="number"
+          placeholder="How many adults"
+          name="adults"
+          onChange={handleChange}
+          value={trainDetails.adults}
+        />
+      </div>
+
+      <div className="form-group">
+        <label htmlFor="children">Children</label>
+        <input
+          type="number"
+          placeholder="How many children(12 - 17 years)"
+          name="children"
+          onChange={handleChange}
+          value={trainDetails.children}
+        />
+      </div>
+
+      <div className="form-group">
+        <label htmlFor="infants">Infants</label>
+        <input
+          type="number"
+          placeholder="How many children (3 - 7 years)"
+          name="infants"
+          onChange={handleChange}
+          value={trainDetails.infants}
+        />
+      </div>
+
+      <div className="form-group">
+        <label htmlFor="class">Coach Class</label>
+        <select name="class" onChange={handleChange} value={trainDetails.class}>
+          <option value="">Select...</option>
+          <option value="first class">First Class</option>
+          <option value="economy">Economy</option>
+        </select>
+      </div>
+
+      <div className="form-group">
         <label htmlFor="departureDate">departure date</label>
         <input
           type="date"
@@ -111,14 +168,10 @@ const SearchTrainForm = (props) => {
       </div>
 
       <button type="submit" className="button-hero-lg">
-        Search
+        Make Reservation
       </button>
     </form>
   );
 };
 
-SearchTrainForm.propTypes = {
-  searchTrain: PropTypes.func.isRequired,
-};
-
-export default connect(null, { createDestination })(SearchTrainForm);
+export default connect(null, { postTravellerDetails })(SearchTrainForm);

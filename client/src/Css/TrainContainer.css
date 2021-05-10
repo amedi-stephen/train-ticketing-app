@@ -3,7 +3,16 @@
 }
 
 .train-row {
-    display: flex;
-    justify-content: space-around;
-    align-items: center;
+    transition: 0.3s;
+}
+@media (min-width: 576px) {
+    .train-container {
+        margin: 40px 10%;
+    }
+    
+    .train-row {
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+    }
 }

@@ -1,15 +1,22 @@
-import React from "react";
+import React, { useEffect } from "react";
+import { connect } from "react-redux";
+import { fetchTravellers } from "../actions/travellerActions";
 import "../Css/SearchTrainContainer.css";
 import SearchTrainForm from "./SearchTrainForm";
 
-const SearchTrainContainer = () => {
+const SearchTrainContainer = (props) => {
+  useEffect(() => {
+    props.fetchTravellers();
+  });
   return (
     <div className="Search-train">
       <div className="hero-image-content">
         <div className="hero-position">
-          <h1>train ticketing app</h1>
+          <div className="heading">
+            <h1>train ticketing app</h1>
 
-          <h2>book tickets from the comfort of your homes</h2>
+            <h4>book tickets from the comfort of your homes</h4>
+          </div>
           <SearchTrainForm />
         </div>
       </div>
@@ -17,4 +24,10 @@ const SearchTrainContainer = () => {
   );
 };
 
-export default SearchTrainContainer;
+const mapStateToProps = (state) => ({
+  clients: state.travellers.travellerItems,
+});
+
+export default connect(mapStateToProps, { fetchTravellers })(
+  SearchTrainContainer
+);

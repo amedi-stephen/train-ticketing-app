@@ -1,8 +1,13 @@
 import { combineReducers } from "redux";
-import trainsReducer from "./trainsReducer";
-import travellersReducer from "./travellersReducer";
+import searchReducer from "./searchReducer";
+import trainReducer from "./trainReducer";
+import travellerReducer from "./travellerReducer";
+import ticketReducer from "./ticketReducer";
 
 export default combineReducers({
-  trains: trainsReducer,
-  travellers: travellersReducer
-});
+    // search: searchReducer,
+    trains: trainReducer,
+    travellers: travellerReducer,
+    // tickets: ticketReducer,
+    // bookings: bookingReducer
+})

@@ -4,12 +4,10 @@ const trainSchema = mongoose.Schema({
   trainName: String,
   totalSeats: {
     type: Number,
-    default: 0,
     max: 1260,
   },
   firstClass: {
     type: Number,
-    default: 0,
     max: 500,
   },
   economyClass: {
@@ -18,33 +16,15 @@ const trainSchema = mongoose.Schema({
     max: 760,
   },
   firstClassPrices: {
-    adults: {
-      type: Number,
-      default: 3000
-    },
-    children: {
-      type: Number,
-      default: 1500
-    },
-    infants: {
-      type: Number,
-      default: 0
-    },
+    adults: Number,
+    children: Number,
+    infants: Number,
   },
 
   economyClassPrices: {
-    adults: {
-      type: Number,
-      default: 1000,
-    },
-    children: {
-      type: Number,
-      default: 500,
-    },
-    infants: {
-      type: Number,
-      default: 0,
-    },
+    adults: Number,
+    children: Number,
+    infants: Number,
   },
   from: String,
   destination: String,

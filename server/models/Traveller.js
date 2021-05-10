@@ -4,25 +4,53 @@ const { Schema } = mongoose;
 const travellerSchema = new Schema({
   travellers: [
     {
-      fullname: String,
+      fullname: {
+        type: String,
+        trim: true,
+        maxlength: 50
+      },
       idcard: String,
       gender: String,
       nationality: String,
     },
   ],
-  coachClass: String,
-  totalPrice: {
+  adults: {
     type: Number,
-    default: 0,
+    default: 0
   },
-  travellerEmail: String,
+  children: {
+    type: Number,
+    default: 0
+  },
+  trainName: {
+    type: String,
+    default: null
+  },
+  infants: {
+    type: Number,
+    default: 0
+  },
+  trainType: {
+    type: String,
+    required: (true, "train type is required")
+  },
+  coachClass: String,
+  totalPrice: Number,
+  travellerEmail: String, //TODO: add email form at the frontend
   mpesaNumber: String,
   travellingDate: {
-    type: String,
-    default: Date.now,
+    type: Date,
+    required: (true, "Date is required"),
+    default: new Date,
   },
-  locationFrom: String,
-  locationTo: String,
+  locationFrom: {
+    type: String,
+    required: (true, "Field required")
+  },
+  locationTo: {
+    type: String,
+    required: (true, "Field required")
+  },
 });
 
 module.exports = mongoose.model("Traveller", travellerSchema);

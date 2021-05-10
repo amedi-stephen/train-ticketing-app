@@ -1,27 +1,21 @@
 import React, { useEffect } from "react";
 import { connect } from "react-redux";
-import { fetchTrains } from "../actions/trainActions";
-import { fetchTravellerStore } from "../actions/travellersActions";
+import { filterTrainDestination } from "../actions/trainActions";
+import { fetchTravellers } from "../actions/travellerActions";
 import "../Css/TrainContainer.css";
 import Train from "./Train";
 
 const TrainContainer = (props) => {
-  console.log(props);
   useEffect(() => {
-    props.fetchTrains();
-    props.fetchTravellerStore();
+    props.filterTrainDestination();
+    // props.fetchTravellers();
   });
-// TODO:
-// find a way to connect the two stores to filter trains based on:
-//  location, date, finished seats
-//   
-//   
   return (
     <div className="train-container">
       <h2>Choose a train</h2>
       <div className="train-row">
-        {props.trains.map((train) => (
-          <Train train={train} />
+        {props.trains.map(train => (
+          <Train train={train} key={train._id} />
         ))}
       </div>
     </div>
@@ -29,10 +23,10 @@ const TrainContainer = (props) => {
 };
 
 const mapStateToProps = (state) => ({
-  trains: state.trains.trainsStore,
-  travellers: state.travellers.travellersStore,
+  trains: state.trains.trainItems,
+  travellers: state.travellers.travellerItems
 });
 
-export default connect(mapStateToProps, { fetchTrains, fetchTravellerStore })(
+export default connect(mapStateToProps, { filterTrainDestination, fetchTravellers })(
   TrainContainer
 );

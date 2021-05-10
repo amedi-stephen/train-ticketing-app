@@ -14,7 +14,7 @@ app.use("/traveller", travellersRoute);
 
 mongoose.connect(
   "mongodb://localhost:27017/traindb",
-  { useNewUrlParser: true, useUnifiedTopology: true },
+  { useNewUrlParser: true, useUnifiedTopology: true, useFindAndModify: false },
   () => {
     console.log("Connected successfully to DB!");
   }
